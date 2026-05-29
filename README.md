@@ -1,4 +1,4 @@
-# VArchiveHelper
+# VArchiveHelper **v0.1.1**
 
 Insert 한 번으로 **2번 모니터(기본 인덱스 1)** 를 지정 해상도로 캡처 → 클립보드 → v-archive **모드1 인식(Alt+Insert)**.
 

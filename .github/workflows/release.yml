@@ -1,0 +1,35 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Build
+        run: dotnet build VArchiveHelper/VArchiveHelper.csproj -c Release
+
+      - name: Pack release zip
+        shell: pwsh
+        run: |
+          $out = "VArchiveHelper/bin/Release/net472"
+          Copy-Item VArchiveHelper/appsettings.example.json "$out/appsettings.json"
+          Compress-Archive -Path "$out/*" -DestinationPath VArchiveHelper-win.zip
+
+      - name: Upload to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: VArchiveHelper-win.zip
+          generate_release_notes: true

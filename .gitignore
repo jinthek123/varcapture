@@ -1,0 +1,33 @@
+# Build
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+**/net472_build/
+**/net472_fix/
+*.lnk
+
+# Local release artifact (CI/tag 빌드용)
+VArchiveHelper-win.zip
+
+# Visual Studio / Rider
+.vs/
+.idea/
+*.user
+*.suo
+*.userosscache
+
+# NuGet
+packages/
+project.lock.json
+
+# Local config (개인 v-archive 경로)
+VArchiveHelper/appsettings.json
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Cursor / assets
+assets/
